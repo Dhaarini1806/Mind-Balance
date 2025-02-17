@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MindBalance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <img id="logo" src="images/logo.png" alt="MindBalance Logo" style="position: absolute; top: 10px; left: 10px; width: 100px; cursor: pointer;">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button id="mode" style="position: fixed; top: 10px; right: 900px;">Dark Mode</button>
+    </div>
+    <script>
+        document.getElementById("logo").addEventListener("click", function() {
+            this.style.width = "50%";
+        });
+    </script>
+    <div class="home" id="home">
+        <h1 style="font-family: 'Blackadder ITC', cursive;">MIND BALANCE</h1>
+        <label for="journal-entry">How was your day today:</label><br>
+        <select id="theme"></select>
+            <option id="theme1" value="dairy1" style="background-image: url('theme1.png');">Diary 1</option>
+            <option id="theme2" value="dairy2" style="background-image: url('theme2.png');">Diary 2</option>
+            <option id="theme3" value="dairy3" style="background-image: url('theme3.png');">Diary 3</option>
+        </select>
+        <label for="font">Choose Font:</label><br>
+        <select id="font">
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+        <div id="input-method">
+            <button id="text-input">Text</button>
+            <button id="voice-input">Voice</button>
+        </div>
+        <script>
+            document.getElementById("theme").addEventListener("change", function() {
+            const selectedTheme = document.getElementById("theme").value;
+            const textArea = document.getElementById("journal-entry");
+
+            if (selectedTheme === "dairy1") {
+                textArea.style.backgroundImage = "url('theme1.png')";
+            } else if (selectedTheme === "dairy2") {
+                textArea.style.backgroundImage = "url('theme2.png')";
+            } else if (selectedTheme === "dairy3") {
+                textArea.style.backgroundImage = "url('theme3.png')";
+            }
+            const pastEntries = document.querySelectorAll(".entry");
+            pastEntries.forEach(entry => {
+                if (selectedTheme === "dairy1") {
+                entry.style.backgroundImage = "url('theme1.png')";
+                } else if (selectedTheme === "dairy2") {
+                entry.style.backgroundImage = "url('theme2.png')";
+                } else if (selectedTheme === "dairy3") {
+                entry.style.backgroundImage = "url('theme3.png')";
+                }
+            });
+            });
+
+            document.getElementById("font").addEventListener("change", function() {
+            const selectedFont = document.getElementById("font").value;
+            const textArea = document.getElementById("journal-entry");
+            textArea.style.fontFamily = selectedFont;
+        });
+
+        </script>
+        <div>
+            <button id="save-entry">Save</button>
+            <h2>Past Entries</h2>
+        </div>
+        {% for entry in entries %}
+            <div class="entry">
+            <p class="timestamp">{{ entry.timestamp }}</p>
+            <p>{{ entry.text }}</p>
+            </div>
+        {% endfor %}
+        <script>
+        document.getElementById("theme").addEventListener("change", function() {
+            const selectedTheme = document.getElementById("theme").value;
+            const textArea = document.getElementById("journal-entry");
+
+            if (selectedTheme === "dairy1") {
+                textArea.style.backgroundImage = "url('theme1.png')";
+            } else if (selectedTheme === "dairy2") {
+                textArea.style.backgroundImage = "url('theme2.png')";
+            } else if (selectedTheme === "dairy3") {
+                textArea.style.backgroundImage = "url('theme3.png')";
+            }
+            const pastEntries = document.querySelectorAll(".entry");
+            pastEntries.forEach(entry => {
+                if (selectedTheme === "dairy1") {
+                entry.style.backgroundImage = "url('theme1.png')";
+                } else if (selectedTheme === "dairy2") {
+                entry.style.backgroundImage = "url('theme2.png')";
+                } else if (selectedTheme === "dairy3") {
+                entry.style.backgroundImage = "url('theme3.png')";
+                }
+            });
+        });
+
+        document.getElementById("save-entry").addEventListener("click", function() {
+            const text = document.getElementById("journal-entry").value.trim();  //trim empty spaces
+            if (text) {
+                const date = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+                fetch("/save_entry", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: text, date: date }),
+                })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById("journal-entry").value = "";
+                        location.reload();
+                    }
+                });
+            }
+        });
+        </script>
+</body>
+
+</html>
