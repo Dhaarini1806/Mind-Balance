@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBalance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <img src="{{ url_for('static', filename='images/top-head.png') }}" alt="Top Head Image" style="height: auto; margin: 0 0 0 0;"><br>
+    <div class="navbar" style="position: -webkit-sticky; top: 30; z-index: 1000; display: flex; align-items: center; padding: 10px;">
+        
+        <img id="logo" src="{{ url_for('static', filename='images/logo.jpg') }}" alt="MindBalance Logo" style="position: relative; height: 40px; margin-right: 20px; border-radius: 50%;">
+        <a id="navbutton" href="#home">Home</a>
+        <a id="navbutton" href="#services">Services</a>
+        <a id="navbutton" href="#about">About</a>
+        <a id="navbutton" href="#contact">Contact</a>
+    </div>
+
+    <div class="home" id="home">
+        <h1>MIND BALANCE</h1>
+        <label for="journal-entry">Tell me about your day</label><br>
+        <textarea id="journal-entry"></textarea><br>
+
+        <h2>Choose Theme:</h2><br>
+        <div class="container" style="display: flex; justify-content: center; gap: 20px;">
+            <div class="option1" style="transition: transform 0.3s;">
+            <img id="theme1" src="{{ url_for('static', filename='images/theme1.png') }}" alt="Dairy 1" style="width: 100px; height: 100px; border-radius: 10px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="selectTheme('theme1')">
+            </div>
+            <div class="option2" style="transition: transform 0.3s;">
+            <img id="theme2" src="{{ url_for('static', filename='images/theme2.png') }}" alt="Dairy 2" style="width: 100px; height: 100px; border-radius: 10px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="selectTheme('theme2')">
+            </div>
+            <div class="option3" style="transition: transform 0.3s;">
+            <img id="theme3" src="{{ url_for('static', filename='images/theme3.png') }}" alt="Dairy 3" style="width: 100px; height: 100px; border-radius: 10px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="selectTheme('theme3')">
+            </div>
+            <div class="option4" style="transition: transform 0.3s;">
+            <img id="theme4" src="{{ url_for('static', filename='images/theme4.png') }}" alt="Dairy 4" style="width: 100px; height: 100px; border-radius: 10px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="selectTheme('theme4')">
+            </div>
+            <div class="option5" style="transition: transform 0.3s;">
+            <img id="theme5" src="{{ url_for('static', filename='images/theme5.png') }}" alt="Dairy 5" style="width: 100px; height: 100px; border-radius: 10px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="selectTheme('theme5')">
+            </div>
+        </div>
+
+    
+        <br>
+
+        <div id="input-method">
+            <button id="text-input">Text</button>
+            <button id="voice-input">Voice</button>
+        </div>
+
+        <button id="save-entry">Save</button>
+
+        <h2>Past Entries</h2>
+        <div id="past-entries">
+            {% for entry in entries %}
+            <div class="entry" data-theme="{{ entry.theme }}" data-font="{{ entry.font }}">
+            <div class="entry-content">
+                <p class="timestamp">{{ entry.timestamp }}</p>
+                <p>{{ entry.text }}</p>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="services" id="services">
+        <h2 style="text-align: center">Our Services</h2>
+        <p>At MindBalance, we offer a variety of services to help you maintain your mental well-being:</p>
+        <dl>
+            <dt style="font-style: italic; font-family: 'Blackadder ITC', cursive; font-size: 30px;">Personalized Journaling</dt>
+            <dd>Keep track of your thoughts and feelings with our personalized journaling feature.</dd><br>
+            <dt style="font-style: italic; font-family: 'Blackadder ITC', cursive; font-size: 30px;">Mindfulness Exercises</dt>
+            <dd>Engage in mindfulness exercises to help you stay grounded and present.</dd><br>
+            <dt style="font-style: italic; font-family: 'Blackadder ITC', cursive; font-size: 30px;">Mental Health Resources</dt>
+            <dd>Access a variety of resources to support your mental health journey.</dd><br>
+            <dt style="font-style: italic; font-family: 'Blackadder ITC', cursive; font-size: 30px;">Community Support</dt>
+            <dd>Connect with others and find support within our community.</dd><br>
+            <dt style="font-style: italic; font-family: 'Blackadder ITC', cursive; font-size: 30px;">Chatbot Support</dt>
+            <dd>Get assistance and guidance from our chatbot.</dd><br>
+            <dt style="font-style: italic; font-family: 'Blackadder ITC', cursive; font-size: 30px;">Voice Input for Journaling</dt>
+            <dd>Use voice input to easily record your journal entries.</dd><br>
+        </dl>
+    </div>
+    <div class="about" id="about">
+        <img id="logo" class="logo-right" src="{{ url_for('static', filename='images/logo.jpg') }}" alt="MindBalance Logo" style="border-radius: 50%; float: right; margin-right: 20px;">
+        <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">About MindBalance</h2>
+        <p>MindBalance is a platform designed to help you maintain your mental well-being through journaling and mindfulness exercises. Our goal is to provide you with the tools you need to reflect on your day, express your thoughts, and track your mental health journey.</p>
+        <p>We believe that taking a few moments each day to write about your experiences can have a profound impact on your overall well-being. Whether you prefer to write or speak your entries, MindBalance is here to support you every step of the way.</p>
+        <h3 style="font-family: 'Blackadder ITC', cursive;">Our Mission</h3>
+        <p>Our mission is to create a safe and supportive space for individuals to explore their thoughts and emotions. We are committed to promoting mental health awareness and providing resources that empower people to take control of their mental well-being.</p>
+    </div>
+    <footer>
+    <div class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or feedback, please feel free to reach out to us at <a href='mailto:support@mindbalance.com'>Contact Support</a>. We are always here to help and support you on your journey.</p>
+        <p>Developed For the wellness of RMKCETians</p>
+        <p>Contact: <a href="mailto:dhaarini1806@gmail.com">dhaarini1806@gmail.com</a></p>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="MindBalance Logo" style="height: 40px; margin-right: auto; border-radius: 50px;">
+    </footer>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>

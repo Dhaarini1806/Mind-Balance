@@ -1,0 +1,192 @@
+/* General Styles */
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
+    background: linear-gradient(to right, #37e7bb, #2cacaa);
+    color: #333;
+    margin: 0;
+    padding: 0;;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #2cacaa,#37a1e7 );
+    padding: 15px 30px;
+}
+
+.navbar img {
+    height: 50px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 23px;
+    font-family: 'Poppins', sans-serif;
+}
+.option1,.option2,.option3,.option4,.option5:hover {
+
+    transform: scale(1.1);
+    }
+/* Main Container */
+.home {
+    padding: 50px;
+    background: #f8f5f0;
+    border-radius: 30px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(222, 156, 70, 0.714);
+    text-align: center;
+}
+.container,.font {
+    border: none;
+    cursor: pointer; /* Makes it look like a button */
+}
+.services,.home,.about {
+    padding: 50px;
+    background: linear-gradient(to right, #ffffffda, #e0e0e070);
+    border-radius: 30px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.option{
+    cursor: pointer;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #004d3b;
+}
+
+label {
+    font-size: 18px;
+    margin-top: 20px;
+    display: block;
+}
+
+textarea {
+    width: 80%;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    color: #000;
+    resize: none;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Theme Selection */
+#theme {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #ff6b35;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #e85d30;
+}
+
+/* Past Entries */
+#past-entries {
+    margin-top: 30px;
+}
+
+.entry {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 60%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.entry-content {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(250, 172, 243, 0.918), rgba(248, 212, 136, 0.736));
+    /* Semi-transparent background for readability */
+    padding: 10px;
+    border-radius: 5px;
+}
+.timestamp {
+    font-size: 14px;
+    color: gray;
+}
+/* Theme-specific backgrounds */
+.entry[data-theme="theme1"] {
+    background-image: url('/static/images/theme1.png');
+}
+
+.entry[data-theme="theme2"] {
+    background-image: url('/static/images/theme2.png');
+}
+
+.entry[data-theme="theme3"] {
+    background-image: url('/static/images/theme3.png');
+}
+
+.entry[data-theme="theme4"] {
+    background-image: url('/static/images/theme4.png');
+}
+
+.entry[data-theme="theme5"] {
+    background-image: url('/static/images/theme5.png');
+}
+
+/* Font-specific styles */
+.entry[data-font="Arial"] {
+    font-family: Arial, sans-serif;
+}
+
+.entry[data-font="Comic Sans MS"] {
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.entry[data-font="Brush Script MT"] {
+    font-family: 'Brush Script MT', cursive;
+}
+.entry[data-font="Pacifico"] {
+    font-family: 'Pacifico', cursive;
+}
+
+.entry[data-font="Dancing Script"] {
+    font-family: 'Dancing Script', cursive;
+}
+
+.entry[data-font="Great Vibes"] {
+    font-family: 'Great Vibes', cursive;
+}
+.entry[data-font="Times New Roman"] {
+    font-family: 'Times New Roman', serif;
+}
+.contact {
+    background: black;
+    color: white;
+    padding: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+}
