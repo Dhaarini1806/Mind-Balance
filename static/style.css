@@ -91,18 +91,6 @@ textarea {
     margin: 20px auto;
 }
 
-/* Buttons */
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
-    border: none;
-    background: #ff6b35;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-}
-
 button:hover {
     background: #e85d30;
 }
